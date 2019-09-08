@@ -10,6 +10,8 @@ const OptimizeCssAssetsPlugin=require('optimize-css-assets-webpack-plugin')
 
 const HtmlWebpackPlugin=require('html-webpack-plugin')
 
+const { CleanWebpackPlugin }=require('clean-webpack-plugin')
+
 module.exports={
     entry:{
         index: './src/index.js',
@@ -38,7 +40,11 @@ module.exports={
                 use:[
                     MiniCssExtractPlugin.loader,
                     'css-loader',
-                    'less-loader'
+                    'less-loader',
+                    {
+                        loader:'postcss-loader'
+                       
+                    }
                 ]
             },
             {
@@ -75,7 +81,9 @@ module.exports={
             assetNameRegExp:/\.css$/g,
             cssProcessor:require('cssnano')
         }),
-        //用于压缩html
+        //自动删除dist打包目录
+        new CleanWebpackPlugin(),
+        //用于压缩html 多个入口需要个自定义
         new HtmlWebpackPlugin({
             template:path.join(__dirname,'src/search.html'),
             filename:'search.html',

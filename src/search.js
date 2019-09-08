@@ -9,7 +9,7 @@ class Search extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            text : 'hellow ailis12223',
+            text : 'hellowAilis',
             setArr : [1,2,3]
         }
     }

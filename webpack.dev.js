@@ -3,7 +3,7 @@
 const path=require('path')
 
 const webpack=require('webpack')
-
+const { CleanWebpackPlugin }=require('clean-webpack-plugin')
 module.exports={
     entry:{
         index: './src/index.js',
@@ -32,7 +32,8 @@ module.exports={
                 use:[
                     'style-loader',
                     'css-loader',
-                    'less-loader'
+                    'less-loader',
+                   
                 ]
             },
             {
@@ -57,7 +58,7 @@ module.exports={
     plugins:[
         //热更新
         new webpack.HotModuleReplacementPlugin(),
-     
+        new CleanWebpackPlugin()
     ],
     devServer:{
         contentBase:'./dist',
