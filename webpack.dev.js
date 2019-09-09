@@ -33,7 +33,13 @@ module.exports={
                     'style-loader',
                     'css-loader',
                     'less-loader',
-                   
+                   {
+                       loader:'px2rem-loader',
+                       options:{
+                           remUnit:75,
+                           remPrecision:8
+                       }
+                    }
                 ]
             },
             {
